@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Umut Göyünç - CV</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Umut Göyünç - Junior Data Scientist CV">
+    <meta name="author" content="Umut Göyünç">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover,
+        .navbar .active a {
+            color: #667eea;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .second {
+            background: white;
+            color: #333;
+        }
+
+        /* Introduction Section */
+        .intro p:first-child {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .units-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .unit-20 img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .unit-80 h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .intro .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        /* Work Experience */
+        .work h1,
+        .award h1,
+        .skills h1 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+            font-weight: 300;
+        }
+
+        .education-list,
+        .work-list,
+        .award-list,
+        .skill-list {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1rem 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-list li,
+        .work-list li,
+        .award-list li,
+        .skill-list li {
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        .education-list li:first-child,
+        .work-list li:first-child,
+        .award-list li:first-child,
+        .skill-list li:first-child {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .education-list li:nth-child(2),
+        .work-list li:nth-child(2),
+        .award-list li:nth-child(2),
+        .skill-list li:nth-child(2) {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Skills bars */
+        .skill-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .skill-name {
+            min-width: 100px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        /* Quote */
+        .quote {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .quote h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .units-row.footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        .social a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .social a:hover {
+            background: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .units-row {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .education-list,
+            .work-list,
+            .award-list,
+            .skill-list {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .intro h1 {
+                font-size: 2rem;
+            }
+
+            .work h1,
+            .award h1,
+            .skills h1 {
+                font-size: 2rem;
+            }
+        }
+
+        #typed {
+            color: #ffd700;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="main-nav">
+        <div class="container">
+            <header class="top-nav">
+                <div class="logo">UMUT GÖYÜNÇ</div>
+                <nav class="navbar">
+                    <ul>
+                        <li class="active"><a href="#about">About</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#achievements">Certificates</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="intro section" id="about">
+        <div class="container">
+            <p>Hi, I'm Umut Göyünç</p>
+            <div class="units-row">
+                <div class="unit-20">
+                    <img src="https://via.placeholder.com/150/667eea/ffffff?text=UG" alt="Umut Göyünç">
+                </div>
+                <div class="unit-80">
+                    <h1>I am a<br><span id="typed"></span></h1>
+                </div>
+            </div>
+            <div class="description">
+                <p>
+                    I am a Junior Data Scientist candidate actively learning programming languages commonly used in data science
+                    and analysis, primarily Python and SQL. My goal is to strengthen my skills by developing projects in machine
+                    learning and data analytics. Although I currently lack professional work experience, I am working
+                    on my own projects and contributing to open-source initiatives to bridge this gap. In the future, I aim to develop
+                    more comprehensive data science projects and gain industry experience.
+                </p>
+                <p>
+                    Since I started my university life, I have made great efforts to improve myself both culturally and academically,
+                    especially in languages. Being able to handle many tasks simultaneously, being conscious of responsibility,
+                    solving problems quickly and practically, and reaching results efficiently are among my most distinctive features.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="work section second" id="education">
+        <div class="container">
+            <h1>Education</h1>
+            <ul class="education-list">
+                <li>2024 - Present</li>
+                <li>MS Applied Mathematics for Data Science and Networks</li>
+                <li>Hochschule Mittweida, Germany</li>
+            </ul>
+            <ul class="education-list">
+                <li>2019 - 2024</li>
+                <li>BS Mathematics</li>
+                <li>Izmir Institute of Technology, Turkey</li>
+                <li>GPA: 2.3/4.0</li>
+            </ul>
+            <ul class="education-list">
+                <li>2023 Summer</li>
+                <li>Mathematics (Erasmus+ Mobility)</li>
+                <li>University of Pitesti, Romania</li>
+            </ul>
+            <ul class="education-list">
+                <li>2018 - 2019</li>
+                <li>English Preparation</li>
+                <li>Izmir Institute of Technology, Turkey</li>
+            </ul>
+            <ul class="education-list">
+                <li>2014 - 2018</li>
+                <li>High School</li>
+                <li>Musrafa Dogan Anatolian High School, Turkey</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Certificates -->
+    <div class="award section second" id="achievements">
+        <div class="container">
+            <h1>Certificates &<br>Achievements</h1>
+            <ul class="award-list">
+                <li>2022</li>
+                <li>Akbank "Cyber Security 101"</li>
+                <li>Participation Certificate</li>
+            </ul>
+            <ul class="award-list">
+                <li>2022</li>
+                <li>Akbank "Data 101"</li>
+                <li>Participation Certificate</li>
+            </ul>
+            <ul class="award-list">
+                <li>2023</li>
+                <li>Erasmus+ Exchange Program</li>
+                <li>Successfully completed mathematics studies in Romania</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="skills section second" id="skills">
+        <div class="container">
+            <h1>Technical<br>Skills</h1>
+            
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); margin-bottom: 2rem;">
+                <h3 style="color: #667eea; margin-bottom: 1.5rem;">Programming Languages</h3>
+                <div class="skill-bar">
+                    <span class="skill-name">Python</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-name">Matlab</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-name">Java</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-name">R Language</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-name">SQL</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+                <h3 style="color: #667eea; margin-bottom: 1.5rem;">Languages & Interests</h3>
+                <ul class="skill-list">
+                    <li>Languages</li>
+                    <li>Turkish (Native), English (Fluent), German (Beginner)</li>
+                </ul>
+                <ul class="skill-list">
+                    <li>Interests</li>
+                    <li>Football, Mathematics, History, Data Science, Machine Learning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="quote">
+        <div class="container">
+            <h1>"Data is the new oil, but analytics is the refinery."</h1>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="units-row footer">
+                <div>
+                    <p>© 2025 Umut Göyünç - Junior Data Scientist</p>
+                </div>
+                <div>
+                    <ul class="social">
+                        <li><a href="mailto:umutgyn99@gmail.com">📧 Email</a></li>
+                        <li><a href="https://linkedin.com/in/umut-göyünç-197720145">💼 LinkedIn</a></li>
+                        <li><a href="tel:+4915259441512">📱 Phone</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing animation
+        const typed = document.getElementById('typed');
+        const texts = ['Junior Data Scientist', 'Python Developer', 'Mathematics Graduate', 'Data Analytics Enthusiast'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typed.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typed.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = 100;
+
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typing animation
+        typeWriter();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.parentElement.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
