@@ -1,551 +1,361 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Umut Göyünç - Junior Data Scientist</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Umut Göyünç - Junior Data Scientist CV">
-    <meta name="author" content="Umut Göyünç">
     
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         /* RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
         /* NAVIGATION */
         .main-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
+            display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            letter-spacing: 1px;
-        }
+        .logo { font-size: 1.4rem; font-weight: 700; color: #667eea; letter-spacing: 1px; }
 
-        .navbar ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+        .navbar ul { display: flex; list-style: none; gap: 1.5rem; }
+        .navbar a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #555; }
+        .navbar a:hover, .navbar .active a { color: #667eea; }
 
-        .navbar a {
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-        }
-
-        .navbar a:hover,
-        .navbar .active a {
-            color: #667eea;
-        }
-
-        /* SECTIONS GENERAL */
-        .section {
-            padding: 6rem 0;
-            min-height: auto; /* Changed from 100vh to fit content better */
-            display: flex;
-            align-items: center;
-        }
-
+        /* SECTIONS */
+        .section { padding: 5rem 0; }
+        
         .intro {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            min-height: 100vh; /* Only intro keeps full height */
+            min-height: 90vh;
+            display: flex; align-items: center;
         }
 
-        .second {
-            background: white;
-            color: #333;
-        }
-
+        .second { background: white; }
+        
         h1.section-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            color: #667eea;
-            font-weight: 300;
+            font-size: 2.5rem; margin-bottom: 2.5rem; color: #667eea;
+            font-weight: 300; position: relative; display: inline-block;
+        }
+        
+        h1.section-title::after {
+            content: ''; display: block; width: 50%; height: 3px;
+            background: #667eea; margin-top: 10px;
         }
 
-        /* INTRO SECTION */
-        .intro p.greeting {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .units-row {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
+        /* INTRO PROFILE */
+        .units-row { display: flex; align-items: center; gap: 3rem; margin-bottom: 2rem; }
+        
         .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            width: 160px; height: 160px; border-radius: 50%;
+            object-fit: cover; border: 4px solid rgba(255,255,255,0.3);
         }
 
-        .intro h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            line-height: 1.2;
-        }
+        .intro h1 { font-size: 3rem; line-height: 1.2; font-weight: 300; }
+        #typed { font-weight: 600; color: #ffd700; }
+        .description { font-size: 1.1rem; opacity: 0.9; max-width: 700px; }
 
-        .intro .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.95;
-            max-width: 800px;
-        }
-
-        /* LIST STYLES (Work, Education, Awards) */
+        /* GENERIC LIST (Experience, Education) */
         .info-list {
+            display: grid; grid-template-columns: 180px 1fr;
+            gap: 1rem; padding: 1.5rem; margin-bottom: 1.5rem;
+            background: #fff; border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+
+        .info-list:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
+        .info-list li { list-style: none; }
+        .date { font-weight: 700; color: #667eea; }
+        .main-info { font-size: 1.2rem; font-weight: 600; color: #2d3436; }
+        .sub-info { font-style: italic; color: #636e72; }
+
+        /* PROJECTS SECTION (NEW) */
+        .projects-grid {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 1rem 2rem;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: #f8f9fa;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .info-list:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-list li {
-            list-style: none;
-            padding: 0.2rem 0;
-        }
-
-        .info-list li:first-child {
-            font-weight: 700;
-            color: #667eea;
-            font-size: 1.1rem;
-        }
-
-        .info-list li:nth-child(2) {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* SKILLS SECTION */
-        .skills-container {
-            background: #f8f9fa; 
-            padding: 2rem; 
-            border-radius: 12px; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
-            margin-bottom: 2rem;
-        }
-
-        .skill-bar {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1.2rem 0;
-        }
-
-        .skill-name {
-            min-width: 120px;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 12px;
-            background: #e0e0e0;
-            border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
         }
 
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 6px;
-            transition: width 1s ease-in-out;
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+
+        .card-header {
+            background: #667eea; padding: 1rem; color: white;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
-        /* QUOTE SECTION */
-        .quote {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
+        .folder-icon { font-size: 1.2rem; opacity: 0.8; }
+
+        .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-body h3 { margin-bottom: 0.5rem; color: #2d3436; }
+        .card-body p { font-size: 0.95rem; color: #636e72; margin-bottom: 1rem; flex-grow: 1; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .tech-tag {
+            font-size: 0.75rem; background: #eef2ff; color: #667eea;
+            padding: 4px 10px; border-radius: 20px; font-weight: 600;
         }
 
-        .quote h1 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            font-style: italic;
-            max-width: 800px;
-            margin: 0 auto;
+        .btn-project {
+            display: inline-block; text-align: center;
+            padding: 0.6rem 1rem; background: #2d3436; color: white;
+            border-radius: 6px; font-size: 0.9rem;
         }
+        .btn-project:hover { background: #667eea; }
+
+        /* SKILLS */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .skill-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .skill-name { min-width: 100px; font-weight: 600; font-size: 0.9rem; }
+        .progress-container { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
+        .progress { height: 100%; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 4px; }
 
         /* FOOTER */
-        footer {
-            background: #2d3436;
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .social {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .social a {
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .social a:hover {
-            background: #667eea;
-            transform: translateY(-3px);
-        }
-
-        #typed {
-            color: #ffd700;
-            font-weight: 600;
-        }
+        footer { background: #2d3436; color: white; padding: 3rem 0; margin-top: auto; }
+        .social-links { display: flex; gap: 1rem; list-style: none; }
+        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .social-links a:hover { background: #667eea; transform: scale(1.1); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .units-row {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .info-list {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .navbar ul {
-                display: none; /* Basit mobil gizleme, hamburger menü eklenebilir */
-            }
-            
-            .intro h1 { font-size: 2.5rem; }
-            h1.section-title { font-size: 2.5rem; text-align: center; }
-            .skill-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .progress-bar { width: 100%; }
+            .navbar { display: none; } /* Mobile Menu implementation needed */
+            .units-row { flex-direction: column; text-align: center; }
+            .info-list { grid-template-columns: 1fr; text-align: center; border-left: none; border-top: 4px solid #667eea; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-nav">
-        <div class="container">
-            <header class="top-nav">
-                <div class="logo">UMUT GÖYÜNÇ</div>
-                <nav class="navbar">
-                    <ul>
-                        <li class="active"><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#achievements">Certificates</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                    </ul>
-                </nav>
-            </header>
+    <nav class="main-nav">
+        <div class="container top-nav">
+            <div class="logo">UMUT GÖYÜNÇ</div>
+            <div class="navbar">
+                <ul>
+                    <li class="active"><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li> <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="intro section" id="about">
+    <section class="intro section" id="about">
         <div class="container">
-            <p class="greeting">Hi, I'm Umut Göyünç</p>
             <div class="units-row">
                 <div class="unit-20">
                     <img src="img/umut.jpg" alt="Umut Göyünç" class="profile-img">
                 </div>
                 <div class="unit-80">
-                    <h1>I am a<br><span id="typed"></span></h1>
+                    <p style="font-size: 1.2rem; opacity:0.8;">Hello, I'm</p>
+                    <h1>Umut Göyünç<br><span id="typed"></span></h1>
                 </div>
             </div>
             <div class="description">
-                <p>
-                    I am a Junior Data Scientist candidate actively learning programming languages commonly used in data science and analysis, primarily Python and SQL. My goal is to strengthen my skills by developing projects in machine learning and data analytics. I am continuously working on personal projects and engaging with open-source initiatives to expand my knowledge and practical expertise.
-                </p>
-                <br>
-                <p>
-                    Currently pursuing my Master's in Germany and gaining practical experience in the automotive industry. Being able to handle many tasks simultaneously, solving problems quickly and practically, and reaching results efficiently are among my most distinctive features.
-                </p>
+                <p>Junior Data Scientist candidate actively learning Python and SQL. Currently pursuing my Master's in Germany. My goal is to strengthen my skills by developing projects in machine learning, data analytics and open-source initiatives.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="work section second" id="experience">
+    <section class="section second" id="experience">
         <div class="container">
-            <h1 class="section-title">Experience</h1>
+            <h1 class="section-title">Work Experience</h1>
             
             <ul class="info-list">
-                <li>Oct 2025 - Sep 2026</li>
-                <li>Sales Controlling Internship</li>
-                <li>Mercedes-Benz Türk - Istanbul, Turkey</li>
-                <li>Participated in sales controlling processes and data analysis.</li>
+                <li class="date">Oct 2025 - Sep 2026</li>
+                <li>
+                    <div class="main-info">Sales Controlling Internship</div>
+                    <div class="sub-info">Mercedes-Benz Türk / Istanbul - Turkey</div>
+                    <p style="margin-top:0.5rem; font-size:0.95rem;">Contributing to sales controlling processes, financial reporting and data analysis within the automotive sector.</p>
+                </li>
             </ul>
         </div>
-    </div>
+    </section>
 
-    <div class="work section second" id="education">
+    <section class="section second" style="background-color: #f9f9f9;" id="projects">
+        <div class="container">
+            <h1 class="section-title">Projects</h1>
+            <p style="margin-bottom: 2rem; color: #666;">Here are some of the data science and analysis projects I've worked on.</p>
+            
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="card-header">
+                        <i class="fab fa-github folder-icon"></i>
+                    </div>
+                    <div class="card-body">
+                        <h3>Customer Churn Prediction</h3>
+                        <p>A machine learning model to predict customer churn using demographic and transaction data. Analyzed patterns to improve retention strategies.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                        <a href="https://github.com/username/project1" target="_blank" class="btn-project">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <i class="fab fa-google folder-icon"></i> </div>
+                    <div class="card-body">
+                        <h3>Sales Data Analysis</h3>
+                        <p>Comprehensive exploratory data analysis (EDA) on retail sales data. Visualized trends and seasonality using Matplotlib and Seaborn.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Google Colab</span>
+                        </div>
+                        <a href="#" target="_blank" class="btn-project">View Colab Notebook <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line folder-icon"></i>
+                    </div>
+                    <div class="card-body">
+                        <h3>Financial Forecasting Model</h3>
+                        <p>Time series forecasting project using historical financial data to predict future trends. Utilized during academic studies.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">R Language</span>
+                            <span class="tech-tag">Time Series</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                        <a href="#" class="btn-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section second" id="education">
         <div class="container">
             <h1 class="section-title">Education</h1>
             
             <ul class="info-list">
-                <li>Oct 2024 - Present</li>
-                <li>MS Applied Mathematics for Data Science and Networks</li>
-                <li>Hochschule Mittweida, Germany</li>
+                <li class="date">Oct 2024 - Present</li>
+                <li>
+                    <div class="main-info">MS Applied Mathematics for Data Science</div>
+                    <div class="sub-info">Hochschule Mittweida, Germany</div>
+                </li>
             </ul>
-            
+
             <ul class="info-list">
-                <li>2019 - 2024</li>
-                <li>BS Mathematics</li>
-                <li>Izmir Institute of Technology, Turkey</li>
-                <li>CGPA: 2.39/4.00</li>
-            </ul>
-            
-            <ul class="info-list">
-                <li>2022 - 2023</li>
-                <li>Mathematics (Erasmus+ Mobility)</li>
-                <li>University of Pitesti, Romania</li>
-                <li>6 Months Exchange Program</li>
-            </ul>
-            
-            <ul class="info-list">
-                <li>2018 - 2019</li>
-                <li>English Preparation</li>
-                <li>Izmir Institute of Technology, Turkey</li>
+                <li class="date">2019 - 2024</li>
+                <li>
+                    <div class="main-info">BS Mathematics</div>
+                    <div class="sub-info">Izmir Institute of Technology, Turkey</div>
+                    <div class="sub-info">CGPA: 2.39/4.00</div>
+                </li>
             </ul>
         </div>
-    </div>
+    </section>
 
-    <div class="award section second" id="achievements">
-        <div class="container">
-            <h1 class="section-title">Certificates</h1>
-            
-            <ul class="info-list">
-                <li>2024</li>
-                <li>AI for Everyone</li>
-                <li>Udemy</li>
-            </ul>
-
-            <ul class="info-list">
-                <li>2022</li>
-                <li>Cyber Security 101</li>
-                <li>Akbank - Participation Certificate</li>
-            </ul>
-            
-            <ul class="info-list">
-                <li>2022</li>
-                <li>Data 101</li>
-                <li>Akbank - Participation Certificate</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="skills section second" id="skills">
+    <section class="section second" id="skills">
         <div class="container">
             <h1 class="section-title">Technical Skills</h1>
-            
-            <div class="skills-container">
-                <h3 style="color: #667eea; margin-bottom: 1.5rem;">Programming & Tools</h3>
-                
-                <div class="skill-bar">
-                    <span class="skill-name">Python</span>
-                    <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+            <div class="skills-grid">
+                <div>
+                    <h3 style="margin-bottom:1rem; color:#667eea;">Programming</h3>
+                    <div class="skill-bar"><span class="skill-name">Python</span><div class="progress-container"><div class="progress" style="width:75%"></div></div></div>
+                    <div class="skill-bar"><span class="skill-name">SQL</span><div class="progress-container"><div class="progress" style="width:65%"></div></div></div>
+                    <div class="skill-bar"><span class="skill-name">R Lang</span><div class="progress-container"><div class="progress" style="width:55%"></div></div></div>
                 </div>
-                
-                <div class="skill-bar">
-                    <span class="skill-name">SQL</span>
-                    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
-                </div>
-
-                <div class="skill-bar">
-                    <span class="skill-name">Power BI</span>
-                    <div class="progress-bar"><div class="progress" style="width: 55%;"></div></div>
-                </div>
-
-                <div class="skill-bar">
-                    <span class="skill-name">R Language</span>
-                    <div class="progress-bar"><div class="progress" style="width: 55%;"></div></div>
-                </div>
-
-                <div class="skill-bar">
-                    <span class="skill-name">Matlab</span>
-                    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
-                </div>
-
-                <div class="skill-bar">
-                    <span class="skill-name">SAP</span>
-                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+                <div>
+                    <h3 style="margin-bottom:1rem; color:#667eea;">Tools & Software</h3>
+                    <div class="skill-bar"><span class="skill-name">Power BI</span><div class="progress-container"><div class="progress" style="width:60%"></div></div></div>
+                    <div class="skill-bar"><span class="skill-name">Matlab</span><div class="progress-container"><div class="progress" style="width:60%"></div></div></div>
+                    <div class="skill-bar"><span class="skill-name">SAP</span><div class="progress-container"><div class="progress" style="width:40%"></div></div></div>
                 </div>
             </div>
-
-            <div class="skills-container">
-                <h3 style="color: #667eea; margin-bottom: 1.5rem;">Other Competencies</h3>
-                <ul class="info-list" style="grid-template-columns: 1fr; background: transparent; padding: 0; box-shadow: none;">
-                    <li>Technical</li>
-                    <li style="font-weight: 400; font-size: 1rem;">OpenFoam, Machine Learning, Neural Networks, MS Office</li>
-                </ul>
-                <ul class="info-list" style="grid-template-columns: 1fr; background: transparent; padding: 0; box-shadow: none;">
-                    <li>Languages</li>
-                    <li style="font-weight: 400; font-size: 1rem;">Turkish (Native), English (Advanced), German (Beginner)</li>
-                </ul>
-            </div>
         </div>
-    </div>
-
-    <div class="quote">
-        <div class="container">
-            <h1>"Data is the new oil, but analytics is the refinery."</h1>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <p>© 2026 Umut Göyünç - Junior Data Scientist</p>
-                    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Bernsdorfer Str. 128 / Chemnitz / Germany</p>
-                </div>
-                <div>
-                    <ul class="social">
-                        <li><a href="mailto:umutgyn99@gmail.com">📧 Email</a></li>
-                        <li><a href="https://linkedin.com/in/umut-göyünç-197720145" target="_blank">💼 LinkedIn</a></li>
-                        <li><a href="tel:+4915259441512">📱 +49 1525 9441512</a></li>
-                    </ul>
-                </div>
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <p>© 2026 Umut Göyünç</p>
+                <p style="font-size:0.8rem; color:#aaa;">Bernsdorfer Str. 128 / Chemnitz</p>
             </div>
+            <ul class="social-links">
+                <li><a href="mailto:umutgyn99@gmail.com"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="https://linkedin.com/in/umut-göyünç-197720145"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="tel:+4915259441512"><i class="fas fa-phone"></i></a></li>
+            </ul>
         </div>
     </footer>
 
     <script>
-        // Typing animation
+        // TYPING EFFECT
         const typed = document.getElementById('typed');
-        const texts = ['Junior Data Scientist', 'Mathematician', 'Sales Controller Candidate', 'Python Developer'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        const texts = ['Junior Data Scientist', 'Mathematician', 'Python Developer'];
+        let textIndex = 0, charIndex = 0, isDeleting = false;
 
         function typeWriter() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typed.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typed.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
+            const current = texts[textIndex];
+            typed.textContent = current.substring(0, isDeleting ? charIndex - 1 : charIndex + 1);
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
 
-            let typeSpeed = 100;
-
-            if (isDeleting) {
-                typeSpeed /= 2;
-            }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true; setTimeout(typeWriter, 2000);
             } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typeSpeed = 500;
+                isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(typeWriter, 500);
+            } else {
+                setTimeout(typeWriter, isDeleting ? 50 : 100);
             }
-
-            setTimeout(typeWriter, typeSpeed);
         }
-
-        // Start typing animation
         typeWriter();
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Update active nav link on scroll
+        // SCROLL SPY
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.navbar a');
-            
             let current = '';
+            
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 250)) {
-                    current = section.getAttribute('id');
-                }
+                if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id');
             });
 
             navLinks.forEach(link => {
                 link.parentElement.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.parentElement.classList.add('active');
-                }
+                if (link.getAttribute('href') === `#${current}`) link.parentElement.classList.add('active');
             });
         });
     </script>
