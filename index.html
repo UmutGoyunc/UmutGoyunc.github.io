@@ -1,378 +1,1097 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Umut Göyünç - Junior Data Scientist</title>
+    <title>Umut Göyünç — Data Scientist</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Umut Göyünç - Junior Data Scientist CV">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Umut Göyünç — Junior Data Scientist | Machine Learning | Deep Learning">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 
     <style>
-        /* RESET & BASE STYLES */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-glass: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #e8e8f0;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent-1: #6c63ff;
+            --accent-2: #00d9ff;
+            --accent-gradient: linear-gradient(135deg, #6c63ff, #00d9ff);
+            --accent-glow: rgba(108, 99, 255, 0.35);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Space Grotesk', var(--font-sans);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            color: var(--text-primary);
+            background: var(--bg-primary);
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        /* NAVIGATION */
-        .main-nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .top-nav {
-            display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;
-        }
-
-        .logo { font-size: 1.4rem; font-weight: 700; color: #667eea; letter-spacing: 1px; }
-
-        .navbar ul { display: flex; list-style: none; gap: 1.5rem; }
-        .navbar a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #555; }
-        .navbar a:hover, .navbar .active a { color: #667eea; }
-
-        /* SECTIONS */
-        .section { padding: 5rem 0; }
-        
-        .intro {
-            background: linear-gradient(135deg, #667eea 50%, #764ba2 50%);
+        ::selection {
+            background: var(--accent-1);
             color: white;
-            min-height: 90vh;
-            display: flex; align-items: center;
         }
 
-        .second { background: white; }
-        
-        h1.section-title {
-            font-size: 2.5rem; margin-bottom: 2.5rem; color: #667eea;
-            font-weight: 300; position: relative; display: inline-block;
-        }
-        
-        h1.section-title::after {
-            content: ''; display: block; width: 50%; height: 3px;
-            background: #667eea; margin-top: 10px;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
         }
 
-        /* INTRO PROFILE */
-        .units-row { display: flex; align-items: center; gap: 3rem; margin-bottom: 2rem; }
-        
+        /* ═══════ AMBIENT BACKGROUND ═══════ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 500px 500px at 15% 30%, rgba(108, 99, 255, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 400px at 85% 70%, rgba(0, 217, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ═══════ MAIN LAYOUT — FULL VIEWPORT ═══════ */
+        .app {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════ LEFT SIDEBAR — PROFILE ═══════ */
+        .sidebar {
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-glass);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 80%, rgba(108, 99, 255, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
         .profile-img {
-            width: 160px; height: 160px; border-radius: 50%;
-            object-fit: cover; border: 4px solid rgba(255,255,255,0.3);
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(108, 99, 255, 0.5);
+            position: relative;
+            z-index: 1;
         }
 
-        .intro h1 { font-size: 3rem; line-height: 1.2; font-weight: 300; }
-        #typed { font-weight: 600; color: #ffd700; }
-        .description { font-size: 1.1rem; opacity: 0.9; max-width: 700px; }
-
-        /* GENERIC LIST (Experience, Education) */
-        .info-list {
-            display: grid; grid-template-columns: 180px 1fr;
-            gap: 1rem; padding: 1.5rem; margin-bottom: 1.5rem;
-            background: #fff; border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border-left: 4px solid #667eea;
-            transition: transform 0.2s;
+        .profile-glow {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            opacity: 0.25;
+            filter: blur(18px);
+            animation: pulse-glow 3s ease-in-out infinite;
         }
 
-        .info-list:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
-        .info-list li { list-style: none; }
-        .date { font-weight: 700; color: #667eea; }
-        
-        /* Yeni eklenen duration stili */
-        .duration-label {
-            font-size: 0.85rem; 
-            font-weight: 400; 
-            color: #7f8c8d; 
-            margin-top: 4px;
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1.05);
+            }
         }
 
-        .main-info { font-size: 1.2rem; font-weight: 600; color: #2d3436; }
-        .sub-info { font-style: italic; color: #636e72; }
+        .sidebar h1 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
 
-        /* PROJECTS SECTION (NEW) */
+        .typed-line {
+            font-size: 0.9rem;
+            min-height: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #typed {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 2px;
+            height: 1rem;
+            background: var(--accent-1);
+            margin-left: 1px;
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .sidebar-bio {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 280px;
+        }
+
+        .sidebar-bio strong {
+            color: var(--text-primary);
+        }
+
+        /* Sidebar Info Items */
+        .sidebar-info {
+            width: 100%;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .info-item i {
+            width: 16px;
+            text-align: center;
+            color: var(--accent-1);
+            font-size: 0.75rem;
+        }
+
+        .info-item a:hover {
+            color: var(--accent-2);
+        }
+
+        /* Sidebar Social */
+        .social-links {
+            display: flex;
+            gap: 0.6rem;
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* ═══════ RIGHT SIDE — CONTENT AREA ═══════ */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ═══════ TOP NAV TABS ═══════ */
+        .tab-nav {
+            display: flex;
+            align-items: center;
+            background: rgba(17, 17, 24, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 0 2rem;
+            flex-shrink: 0;
+        }
+
+        .tab-btn {
+            padding: 1.1rem 1.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+            font-family: var(--font-sans);
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-secondary);
+        }
+
+        .tab-btn.active {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active::after {
+            width: 70%;
+        }
+
+        /* ═══════ TAB PANELS ═══════ */
+        .tab-panels {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tab-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2.5rem;
+            overflow-y: auto;
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .tab-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        /* Scrollbar */
+        .tab-panel::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .tab-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tab-panel::-webkit-scrollbar-thumb {
+            background: var(--border-glass);
+            border-radius: 4px;
+        }
+
+        /* Panel Section Header */
+        .panel-header {
+            margin-bottom: 2rem;
+        }
+
+        .panel-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-2);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .panel-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gradient);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        /* ═══════ EXPERIENCE — TIMELINE ═══════ */
+        .timeline {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-1), var(--accent-2), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(108, 99, 255, 0.2);
+            transform: translateX(4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 1.75rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .tl-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 0.4rem;
+        }
+
+        .tl-date .duration {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .tl-role {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .tl-company {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .tl-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .tl-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .tl-header-text {
+            flex: 1;
+        }
+
+        .company-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 8px;
+            border: 1px solid var(--border-glass);
+            flex-shrink: 0;
+        }
+
+        /* ═══════ PROJECTS ═══════ */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
         }
 
         .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #eee;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
-
-        .card-header {
-            background: #667eea; padding: 1rem; color: white;
-            display: flex; justify-content: space-between; align-items: center;
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .folder-icon { font-size: 1.2rem; opacity: 0.8; }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(108, 99, 255, 0.25);
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25), 0 0 30px rgba(108, 99, 255, 0.06);
+        }
 
-        .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .card-body h3 { margin-bottom: 0.5rem; color: #2d3436; }
-        .card-body p { font-size: 0.95rem; color: #636e72; margin-bottom: 1rem; flex-grow: 1; }
+        .project-card:hover::before {
+            opacity: 1;
+        }
 
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            flex-grow: 1;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
         .tech-tag {
-            font-size: 0.75rem; background: #eef2ff; color: #667eea;
-            padding: 4px 10px; border-radius: 20px; font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--accent-1);
+            border: 1px solid rgba(108, 99, 255, 0.15);
         }
 
         .btn-project {
-            display: inline-block; text-align: center;
-            padding: 0.6rem 1rem; background: #2d3436; color: white;
-            border-radius: 6px; font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
         }
-        .btn-project:hover { background: #667eea; }
 
-        /* SKILLS */
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .skill-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-        .skill-name { min-width: 100px; font-weight: 600; font-size: 0.9rem; }
-        .progress-container { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
-        .progress { height: 100%; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 4px; }
+        .btn-project:hover {
+            color: var(--accent-1);
+            gap: 10px;
+        }
 
-        /* FOOTER */
-        footer { background: #2d3436; color: white; padding: 3rem 0; margin-top: auto; }
-        .social-links { display: flex; gap: 1rem; list-style: none; }
-        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .social-links a:hover { background: #667eea; transform: scale(1.1); }
+        .btn-project i {
+            font-size: 0.65rem;
+        }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .navbar { display: none; } /* Mobile Menu implementation needed */
-            .units-row { flex-direction: column; text-align: center; }
-            .info-list { grid-template-columns: 1fr; text-align: center; border-left: none; border-top: 4px solid #667eea; }
-            .skills-grid { grid-template-columns: 1fr; }
+        /* ═══════ EDUCATION ═══════ */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 217, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .edu-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--accent-2);
+            margin-bottom: 0.75rem;
+        }
+
+        .edu-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-degree {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-school {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .edu-gpa {
+            margin-top: 0.5rem;
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 20px;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--accent-1);
+            border: 1px solid rgba(108, 99, 255, 0.15);
+        }
+
+        /* ═══════ SKILLS ═══════ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--accent-1);
+            font-size: 0.85rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-pill {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            background: rgba(108, 99, 255, 0.06);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 99, 255, 0.1);
+        }
+
+        .skill-pill.highlight {
+            background: rgba(108, 99, 255, 0.1);
+            border-color: rgba(108, 99, 255, 0.2);
+            color: var(--accent-1);
+        }
+
+        /* ═══════ FOOTER INSIDE SIDEBAR ═══════ */
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════ RESPONSIVE — MOBILE ═══════ */
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow: auto;
+                height: auto;
+            }
+
+            .app {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-glass);
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .sidebar h1 {
+                font-size: 1.4rem;
+            }
+
+            .content-area {
+                height: auto;
+                overflow: visible;
+            }
+
+            .tab-nav {
+                overflow-x: auto;
+                padding: 0 1rem;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .tab-btn {
+                padding: 0.9rem 1rem;
+                font-size: 0.7rem;
+                white-space: nowrap;
+            }
+
+            .tab-panels {
+                overflow: visible;
+            }
+
+            .tab-panel {
+                position: relative;
+                padding: 1.5rem;
+                display: none;
+            }
+
+            .tab-panel.active {
+                display: block;
+                opacity: 1;
+                transform: none;
+                pointer-events: all;
+            }
+
+            .projects-grid,
+            .education-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 1.5rem 1rem;
+            }
+
+            .tab-panel {
+                padding: 1.25rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="main-nav">
-        <div class="container top-nav">
-            <div class="logo">UMUT GÖYÜNÇ</div>
-            <div class="navbar">
-                <ul>
-                    <li class="active"><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li> <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                </ul>
+    <div class="app">
+
+        <!-- ═══════ LEFT SIDEBAR ═══════ -->
+        <aside class="sidebar">
+            <div class="profile-wrapper">
+                <div class="profile-glow"></div>
+                <img src="img/umut.png" alt="Umut Göyünç" class="profile-img">
             </div>
-        </div>
-    </nav>
 
-    <section class="intro section" id="about">
-        <div class="container">
-            <div class="units-row">
-                <div class="unit-20">
-                    <img src="img/umut.jpg" alt="Umut Göyünç" class="profile-img">
+            <h1>Umut Göyünç</h1>
+            <div class="typed-line"><span id="typed"></span><span class="cursor-blink"></span></div>
+
+            <p class="sidebar-bio">
+                Currently pursuing my MSc in Germany, specializing in <strong>Machine Learning</strong> & <strong>Deep
+                    Learning</strong>. Turning data into meaningful insights through hands-on projects.
+            </p>
+
+            <div class="sidebar-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Chemnitz, Germany</span>
                 </div>
-                <div class="unit-80">
-                    <p style="font-size: 1.2rem; opacity:0.8;">Hello, I'm</p>
-                    <h1>Umut Göyünç<br><span id="typed"></span></h1>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:umutgyn99@gmail.com">umutgyn99@gmail.com</a>
                 </div>
-            </div>
-            <div class="description">
-                <p>
-                    Currently pursuing my Master's degree in Germany, I am specializing in <b>Machine Learning</b> and <b>Deep Learning</b>. I actively reinforce my theoretical knowledge by building and sharing hands-on projects to turn data into meaningful insights.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section second" id="experience">
-        <div class="container">
-            <h1 class="section-title">Work Experience</h1>
-            
-            <ul class="info-list">
-                <li class="date">
-                    Oct 2025 - Sep 2026
-                    <div class="duration-label">(11 Months)</div>
-                </li>
-                <li>
-                    <div class="main-info">Sales Controlling Internship</div>
-                    <div class="sub-info">Mercedes-Benz Türk / Istanbul - Turkey</div>
-                    <p style="margin-top:0.5rem; font-size:0.95rem;">Contributing to sales controlling processes, financial reporting and data analysis within the automotive sector.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section second" style="background-color: #f9f9f9;" id="projects">
-        <div class="container">
-            <h1 class="section-title">Projects</h1>
-            <p style="margin-bottom: 2rem; color: #666;">Here are some of the data science and analysis projects I've worked on.</p>
-            
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="card-header">
-                        <i class="fab fa-github folder-icon"></i>
-                    </div>
-                    <div class="card-body">
-                        <h3>Customer Churn Prediction</h3>
-                        <p>A machine learning model to predict customer churn using demographic and transaction data. Analyzed patterns to improve retention strategies.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-Learn</span>
-                            <span class="tech-tag">Pandas</span>
-                        </div>
-                        <a href="https://github.com/username/project1" target="_blank" class="btn-project">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+4915259441512">+49 152 5944 1512</a>
                 </div>
-
-                <div class="project-card">
-                    <div class="card-header">
-                        <i class="fab fa-google folder-icon"></i> </div>
-                    <div class="card-body">
-                        <h3>Sales Data Analysis</h3>
-                        <p>Comprehensive exploratory data analysis (EDA) on retail sales data. Visualized trends and seasonality using Matplotlib and Seaborn.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Matplotlib</span>
-                            <span class="tech-tag">Google Colab</span>
-                        </div>
-                        <a href="#" target="_blank" class="btn-project">View Colab Notebook <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="card-header">
-                        <i class="fas fa-chart-line folder-icon"></i>
-                    </div>
-                    <div class="card-body">
-                        <h3>Financial Forecasting Model</h3>
-                        <p>Time series forecasting project using historical financial data to predict future trends. Utilized during academic studies.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">R Language</span>
-                            <span class="tech-tag">Time Series</span>
-                            <span class="tech-tag">Excel</span>
-                        </div>
-                        <a href="#" class="btn-project">View Project <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section second" id="education">
-        <div class="container">
-            <h1 class="section-title">Education</h1>
-            
-            <ul class="info-list">
-                <li class="date">Oct 2024 - Present</li>
-                <li>
-                    <div class="main-info">MSc. Applied Mathematics for Data Science</div>
-                    <div class="sub-info">Hochschule Mittweida, Germany</div>
-                </li>
-            </ul>
-
-            <ul class="info-list">
-                <li class="date">2019 - 2024</li>
-                <li>
-                    <div class="main-info">BSc. Mathematics</div>
-                    <div class="sub-info">Izmir Institute of Technology, Turkey</div>
-                    <div class="sub-info">CGPA: 2.39/4.00</div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section second" id="skills">
-        <div class="container">
-            <h1 class="section-title">Technical Skills</h1>
-            <div class="skills-grid">
-                <div>
-                    <h3 style="margin-bottom:1rem; color:#667eea;">Programming</h3>
-                    <div class="skill-bar"><span class="skill-name">Python</span><div class="progress-container"><div class="progress" style="width:75%"></div></div></div>
-                    <div class="skill-bar"><span class="skill-name">SQL</span><div class="progress-container"><div class="progress" style="width:50%"></div></div></div>
-                    <div class="skill-bar"><span class="skill-name">R Lang</span><div class="progress-container"><div class="progress" style="width:75%"></div></div></div>
-                    <div class="skill-bar"><span class="skill-name">Matlab</span><div class="progress-container"><div class="progress" style="width:70%"></div></div></div>
-                </div>
-                <div>
-                    <h3 style="margin-bottom:1rem; color:#667eea;">Tools & Software</h3>
-                    <div class="skill-bar"><span class="skill-name">Power BI</span><div class="progress-container"><div class="progress" style="width:60%"></div></div></div>
-                    
-                    
+                <div class="info-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>MSc. Applied Math — Hochschule Mittweida</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <p>© 2026 Umut Göyünç</p>
-                <p style="font-size:0.8rem; color:#aaa;">Bernsdorfer Str. 128 / Chemnitz</p>
-            </div>
             <ul class="social-links">
-                <li><a href="mailto:umutgyn99@gmail.com"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="https://linkedin.com/in/umut-göyünç-197720145"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="tel:+4915259441512"><i class="fas fa-phone"></i></a></li>
+                <li><a href="mailto:umutgyn99@gmail.com" title="Email"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="https://linkedin.com/in/umut-göyünç-197720145" target="_blank" title="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="https://github.com/umutgoyunc" target="_blank" title="GitHub"><i
+                            class="fab fa-github"></i></a></li>
             </ul>
-        </div>
-    </footer>
+
+            <div class="sidebar-footer">© 2026 Umut Göyünç</div>
+        </aside>
+
+        <!-- ═══════ RIGHT CONTENT AREA ═══════ -->
+        <main class="content-area">
+
+            <!-- Tab Navigation -->
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="experience"><i class="fas fa-briefcase"></i>&nbsp;
+                    Experience</button>
+                <button class="tab-btn" data-tab="projects"><i class="fas fa-rocket"></i>&nbsp; Projects</button>
+                <button class="tab-btn" data-tab="education"><i class="fas fa-graduation-cap"></i>&nbsp;
+                    Education</button>
+                <button class="tab-btn" data-tab="skills"><i class="fas fa-code"></i>&nbsp; Skills</button>
+            </nav>
+
+            <!-- Tab Panels -->
+            <div class="tab-panels">
+
+                <!-- ── EXPERIENCE ── -->
+                <div class="tab-panel active" id="panel-experience">
+                    <div class="panel-header">
+                        <span class="panel-label">Career</span>
+                        <h2 class="panel-title">Work Experience</h2>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="tl-header">
+                                <img src="img/mercedeslogo.png" alt="Mercedes-Benz" class="company-logo">
+                                <div class="tl-header-text">
+                                    <div class="tl-date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        Oct 2025 — Sep 2026
+                                        <span class="duration">· 11 Months</span>
+                                    </div>
+                                    <div class="tl-role">Sales Controlling Internship</div>
+                                    <div class="tl-company">Mercedes-Benz Türk / Istanbul, Turkey</div>
+                                </div>
+                            </div>
+                            <p class="tl-desc" style="margin-top: 0.75rem;">
+                                Contributing to sales controlling processes, financial reporting and data analysis
+                                within the automotive sector. Gaining hands-on experience with enterprise-level data
+                                workflows and business intelligence tools.
+                            </p>
+                            <div class="tech-stack" style="margin-top: 0.75rem;">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">SAP</span>
+                                <span class="tech-tag">Microsoft Excel</span>
+                                <span class="tech-tag">Power Automate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PROJECTS ── -->
+                <div class="tab-panel" id="panel-projects">
+                    <div class="panel-header">
+                        <span class="panel-label">Portfolio</span>
+                        <h2 class="panel-title">Projects</h2>
+                    </div>
+                    <p
+                        style="color: var(--text-secondary); margin-top: -1rem; margin-bottom: 1.5rem; font-size: 0.85rem;">
+                        Data science and analysis projects I've worked on.
+                    </p>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Customer Churn Prediction</h3>
+                            <p>A machine learning model to predict customer churn using demographic and transaction
+                                data. Analyzed patterns to improve retention strategies.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-Learn</span>
+                                <span class="tech-tag">Pandas</span>
+                            </div>
+                            <a href="https://github.com/username/project1" target="_blank" class="btn-project">
+                                View on GitHub <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-chart-bar"></i></div>
+                            <h3>Sales Data Analysis</h3>
+                            <p>Comprehensive EDA on retail sales data. Visualized trends and seasonality using
+                                Matplotlib and Seaborn.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">Google Colab</span>
+                            </div>
+                            <a href="#" target="_blank" class="btn-project">
+                                View Notebook <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>Financial Forecasting Model</h3>
+                            <p>Time series forecasting project using historical financial data to predict future trends.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">R Language</span>
+                                <span class="tech-tag">Time Series</span>
+                                <span class="tech-tag">Excel</span>
+                            </div>
+                            <a href="#" class="btn-project">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── EDUCATION ── -->
+                <div class="tab-panel" id="panel-education">
+                    <div class="panel-header">
+                        <span class="panel-label">Academic Background</span>
+                        <h2 class="panel-title">Education</h2>
+                    </div>
+                    <div class="education-grid">
+                        <div class="education-card">
+                            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="edu-date"><i class="far fa-calendar-alt"></i> Oct 2024 — Present</div>
+                            <div class="edu-degree">MSc. Applied Mathematics for Data Science</div>
+                            <div class="edu-school"><i class="fas fa-university"></i> Hochschule Mittweida, Germany
+                            </div>
+                        </div>
+                        <div class="education-card">
+                            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="edu-date"><i class="far fa-calendar-alt"></i> 2019 — 2024</div>
+                            <div class="edu-degree">BSc. Mathematics</div>
+                            <div class="edu-school"><i class="fas fa-university"></i> Izmir Institute of Technology,
+                                Turkey</div>
+                            <span class="edu-gpa">CGPA: 2.39 / 4.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── SKILLS ── -->
+                <div class="tab-panel" id="panel-skills">
+                    <div class="panel-header">
+                        <span class="panel-label">Expertise</span>
+                        <h2 class="panel-title">Technical Skills</h2>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-code"></i> Programming</h3>
+                            <div class="skill-tags">
+                                <span class="skill-pill highlight">Python</span>
+                                <span class="skill-pill">SQL</span>
+                                <span class="skill-pill highlight">R Language</span>
+                                <span class="skill-pill">MATLAB</span>
+                                <span class="skill-pill">HTML / CSS</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-robot"></i> ML & Data Science</h3>
+                            <div class="skill-tags">
+                                <span class="skill-pill highlight">Scikit-Learn</span>
+                                <span class="skill-pill">Pandas</span>
+                                <span class="skill-pill">NumPy</span>
+                                <span class="skill-pill">Matplotlib</span>
+                                <span class="skill-pill">Seaborn</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-tools"></i> Tools & Software</h3>
+                            <div class="skill-tags">
+                                <span class="skill-pill highlight">Power BI</span>
+                                <span class="skill-pill">Google Colab</span>
+                                <span class="skill-pill">Git / GitHub</span>
+                                <span class="skill-pill">Excel</span>
+                                <span class="skill-pill">Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
 
     <script>
-        // TYPING EFFECT
+        // ── TYPING EFFECT ──
         const typed = document.getElementById('typed');
-        const texts = ['Junior Data Scientist', 'Mathematician', 'Python Developer'];
+        const texts = ['Junior Data Scientist', 'Mathematician', 'Python Developer', 'ML Enthusiast'];
         let textIndex = 0, charIndex = 0, isDeleting = false;
 
         function typeWriter() {
             const current = texts[textIndex];
-            typed.textContent = current.substring(0, isDeleting ? charIndex - 1 : charIndex + 1);
-            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+            charIndex += isDeleting ? -1 : 1;
+            typed.textContent = current.substring(0, charIndex);
 
             if (!isDeleting && charIndex === current.length) {
-                isDeleting = true; setTimeout(typeWriter, 2000);
+                isDeleting = true; setTimeout(typeWriter, 2200);
             } else if (isDeleting && charIndex === 0) {
-                isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(typeWriter, 500);
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, 400);
             } else {
-                setTimeout(typeWriter, isDeleting ? 50 : 100);
+                setTimeout(typeWriter, isDeleting ? 40 : 80);
             }
         }
         typeWriter();
 
-        // SCROLL SPY
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.navbar a');
-            let current = '';
-            
-            sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id');
-            });
+        // ── TAB SWITCHING ──
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
 
-            navLinks.forEach(link => {
-                link.parentElement.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) link.parentElement.classList.add('active');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                tabPanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    if (panel.id === `panel-${target}`) {
+                        panel.classList.add('active');
+                    }
+                });
             });
         });
     </script>
 </body>
+
 </html>
